@@ -1,0 +1,73 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>TiltShifter</title>
+  <style>
+    html,
+    body {
+      background: #fff;
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    #wrapper {
+      box-sizing: border-box;
+      padding: 5%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    #target {
+      display: relative;
+      box-sizing: border-box;
+      color: magenta;
+      background: #fff;
+      font-family: Sans-serif;
+      font-weight: 900;
+      text-align: center;
+      font-size: 20px;
+      border: 7px dashed magenta;
+      border-radius: 20px;
+      height: 100%;
+    }
+
+    #blurred, #overlayed {
+      z-index: 0;
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    #blurred {
+      filter: blur(12px);
+    }
+
+    #overlayed {
+      z-index: 1;
+      -webkit-mask-image: linear-gradient(
+        transparent,
+        rgba(0, 0, 0, 1.0),
+        transparent);
+    }
+  </style>
+
+</head>
+
+<body>
+  <div id="wrapper">
+    <div id="target">
+      <img id="blurred" />
+      <img id="overlayed" />
+  </div>
+  <div id="msg">Drag and drop image above</div>
+  <script src="script.js"></script>
+</body>
+
+</html>
