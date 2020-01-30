@@ -37,35 +37,34 @@
       height: 100%;
     }
 
-    #blurred, #overlayed {
-      z-index: 0;
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 0;
-    }
-
-    #blurred {
-      filter: blur(12px);
-    }
-
-    #overlayed {
-      z-index: 1;
-      -webkit-mask-image: linear-gradient(
-        transparent,
-        rgba(0, 0, 0, 1.0),
-        transparent);
+    #svg {
+      display: none;
     }
   </style>
 
 </head>
 
 <body>
+
   <div id="wrapper">
-    <div id="target">
-      <img id="blurred" />
-      <img id="overlayed" />
-  </div>
+    <div id="target" xmlns="http://www.w3.org/1999/xhtml">
+      <svg id="svg" xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink">
+        <defs>
+          <filter id="blur">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="8" />
+          </filter>
+          <linearGradient id="gradient" gradientTransform="rotate(90)">
+            <stop offset="25%" stop-color="white" stop-opacity="0" />
+            <stop offset="50%" stop-color="white" stop-opacity="1" />
+            <stop offset="100%" stop-color="white" stop-opacity="0" />
+          </linearGradient>
+          <mask id="gradient-mask">
+            <rect x="0" y="0" width="300" height="300" fill="url(#gradient)" />
+          </mask>
+        </defs>
+      </svg>
+    </div>
   <div id="msg">Drag and drop image above</div>
   <script src="script.js"></script>
 </body>
